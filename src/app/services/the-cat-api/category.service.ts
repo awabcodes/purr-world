@@ -3,7 +3,7 @@ import { environment } from 'src/environments/environment';
 import { HttpClient, HttpResponse } from '@angular/common/http';
 import { Observable } from 'rxjs';
 import { createRequestOption } from './request-util';
-import { Category } from '../models/category.model';
+import { Category } from '../../models/category.model';
 
 
 @Injectable({

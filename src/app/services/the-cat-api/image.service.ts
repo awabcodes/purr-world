@@ -3,8 +3,8 @@ import { environment } from 'src/environments/environment';
 import { HttpClient, HttpResponse } from '@angular/common/http';
 import { Observable } from 'rxjs';
 import { createRequestOption } from './request-util';
-import { Image } from '../models/image.model';
-import { ImageAnalysis } from '../models/image-analysis.model';
+import { Image } from '../../models/image.model';
+import { ImageAnalysis } from '../../models/image-analysis.model';
 
 @Injectable({
   providedIn: 'root'

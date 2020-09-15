@@ -3,7 +3,7 @@ import { environment } from 'src/environments/environment';
 import { HttpClient, HttpResponse } from '@angular/common/http';
 import { Observable } from 'rxjs';
 import { createRequestOption } from './request-util';
-import { Breed } from '../models/breed.model';
+import { Breed } from '../../models/breed.model';
 
 
 @Injectable({
