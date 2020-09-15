@@ -1,3 +1,5 @@
 export const environment = {
-  production: true
+  production: true,
+  theCatApiUrl: 'https://api.thecatapi.com',
+  theCatApiApiKey: ''
 };
