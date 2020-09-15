@@ -1,6 +1,6 @@
 {
-  "appId": "io.ionic.starter",
-  "appName": "purr-world",
+  "appId": "com.awabcodes.purrworld",
+  "appName": "Purr World",
   "bundledWebRuntime": false,
   "npmClient": "npm",
   "webDir": "www",
