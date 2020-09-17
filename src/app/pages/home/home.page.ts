@@ -1,9 +1,9 @@
 import { Component } from '@angular/core';
-import { Image } from '../models/image.model';
-import { ImageService } from '../services/the-cat-api/image.service';
+import { Image } from '../../models/image.model';
+import { ImageService } from '../../services/the-cat-api/image.service';
 import { HttpResponse } from '@angular/common/http';
 import { filter, map } from 'rxjs/operators';
-import { CustomAlertService } from '../services/alert/custom-alert.service';
+import { CustomAlertService } from '../../services/alert/custom-alert.service';
 
 @Component({
   selector: 'app-home',
