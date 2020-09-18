@@ -18,7 +18,7 @@
   </ion-refresher>
 
   <div *ngFor="let image of images; trackBy: trackId">
-    <ion-card>
+    <ion-card (click)="view(image)">
       <img class="image" [src]="image.url" alt="" />
     </ion-card>
   </div>

@@ -4,6 +4,7 @@ import { ImageService } from '../../services/the-cat-api/image.service';
 import { HttpResponse } from '@angular/common/http';
 import { filter, map } from 'rxjs/operators';
 import { CustomAlertService } from '../../services/alert/custom-alert.service';
+import { NavController } from '@ionic/angular';
 
 @Component({
   selector: 'app-home',
@@ -18,7 +19,8 @@ export class HomePage {
 
   constructor(
     private imageService: ImageService,
-    private customAlertService: CustomAlertService
+    private customAlertService: CustomAlertService,
+    private navController: NavController
   ) {
     this.images = [];
   }
@@ -66,5 +68,9 @@ export class HomePage {
 
   doInfinite(event) {
     this.loadAll(false, event);
+  }
+
+  view(image: Image) {
+    this.navController.navigateForward('/home/image-detail/' + image.id + '/view');
   }
 }
