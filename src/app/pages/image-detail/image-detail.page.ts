@@ -1,9 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 import { Image } from 'src/app/models/image.model';
 import { ActivatedRoute } from '@angular/router';
-import { Plugins, FilesystemDirectory, FilesystemEncoding } from '@capacitor/core';
-
-const { Share, Filesystem } = Plugins;
+import { Filesystem, Directory, Encoding } from '@capacitor/filesystem';
+import { Share } from '@capacitor/share';
 
 @Component({
   selector: 'app-image-detail',
@@ -30,9 +29,9 @@ export class ImageDetailPage implements OnInit {
       const result = await Filesystem.writeFile({
         path: fileName,
         data: this.image.url,
-        directory: FilesystemDirectory.Data,
-        encoding: FilesystemEncoding.UTF8
-      })
+        directory: Directory.Data,
+        encoding: Encoding.UTF8
+      });
       console.log('file Downloaded', result);
     } catch (e) {
       console.error('Unable to write file', e);
