@@ -1,3 +1,9 @@
 {
-
+  "appName": "عالم القطط",
+  "noImagesFound": "لا توجد صور",
+  "infiniteScrollMessage": "جاري التحميل ...",
+  "failedToLoad": "فشل في التحميل",
+  "imageDetails": "تفاصيل الصور",
+  "save": "حفظ",
+  "share": "مشاركة"
 }

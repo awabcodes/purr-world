@@ -1,3 +1,9 @@
 {
-
+  "appName": "Purr World",
+  "noImagesFound": "No images found",
+  "infiniteScrollMessage": "Loading...",
+  "failedToLoad": "Failed to load",
+  "imageDetails": "Image Details",
+  "save": "Save",
+  "share": "Share"
 }
