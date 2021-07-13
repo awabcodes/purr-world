@@ -1,0 +1,7 @@
+<?xml version='1.0' encoding='utf-8'?>
+<resources>
+    <string name="app_name">Purr World</string>
+    <string name="title_activity_main">Purr World</string>
+    <string name="package_name">com.awabcodes.purrworld</string>
+    <string name="custom_url_scheme">com.awabcodes.purrworld</string>
+</resources>

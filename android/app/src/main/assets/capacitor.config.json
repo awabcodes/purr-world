@@ -1,0 +1,6 @@
+{
+	"appId": "com.awabcodes.purrworld",
+	"appName": "Purr World",
+	"webDir": "www",
+	"bundledWebRuntime": false
+}
