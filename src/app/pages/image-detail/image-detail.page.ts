@@ -10,12 +10,9 @@ import { Share } from '@capacitor/share';
   styleUrls: ['./image-detail.page.scss'],
 })
 export class ImageDetailPage implements OnInit {
-
   image: Image;
 
-  constructor(
-    protected activatedRoute: ActivatedRoute,
-  ) { }
+  constructor(protected activatedRoute: ActivatedRoute) {}
 
   ngOnInit() {
     this.activatedRoute.data.subscribe((response) => {
@@ -25,12 +22,14 @@ export class ImageDetailPage implements OnInit {
 
   async save() {
     try {
-      let fileName = this.image.url.substring(this.image.url.lastIndexOf('/') + 1);
+      const fileName = this.image.url.substring(
+        this.image.url.lastIndexOf('/') + 1
+      );
       const result = await Filesystem.writeFile({
         path: fileName,
         data: this.image.url,
         directory: Directory.Data,
-        encoding: Encoding.UTF8
+        encoding: Encoding.UTF8,
       });
       console.log('file Downloaded', result);
     } catch (e) {
@@ -39,12 +38,11 @@ export class ImageDetailPage implements OnInit {
   }
 
   async share() {
-    let shareRet = await Share.share({
+    const shareRet = await Share.share({
       title: 'Purr World',
       text: 'Awesome cat you need to see right meow',
       url: this.image.url,
-      dialogTitle: 'Share with buddies'
+      dialogTitle: 'Share with buddies',
     });
   }
-
 }

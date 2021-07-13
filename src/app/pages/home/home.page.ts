@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import { Image } from '../../models/image.model';
 import { ImageService } from '../../services/the-cat-api/image.service';
 import { HttpResponse } from '@angular/common/http';
@@ -11,11 +11,10 @@ import { NavController } from '@ionic/angular';
   templateUrl: 'home.page.html',
   styleUrls: ['home.page.scss'],
 })
-export class HomePage {
-
+export class HomePage implements OnInit {
   images: Image[];
-  limit: number = 5;
-  page: number = 0;
+  limit = 5;
+  page = 0;
 
   constructor(
     private imageService: ImageService,
@@ -35,20 +34,22 @@ export class HomePage {
       this.page = 0;
     }
 
-    this.imageService.list({
-      page: this.page,
-      limit: this.limit
-    }).pipe(
-      filter((res: HttpResponse<Image[]>) => res.ok),
-      map((res: HttpResponse<Image[]>) => res.body)
-    )
+    this.imageService
+      .list({
+        page: this.page,
+        limit: this.limit,
+      })
+      .pipe(
+        filter((res: HttpResponse<Image[]>) => res.ok),
+        map((res: HttpResponse<Image[]>) => res.body)
+      )
       .subscribe(
         (response: Image[]) => {
-          for (let i = 0; i < response.length; i++) {
-            this.images.push(response[i]);
+          for (const image of response) {
+            this.images.push(image);
           }
 
-          if (typeof (event) !== 'undefined') {
+          if (typeof event !== 'undefined') {
             setTimeout(() => {
               event.target.complete();
             }, 750);
@@ -58,8 +59,9 @@ export class HomePage {
         },
         (error) => {
           console.error(error);
-          this.customAlertService.showToast('FAILED_TO_LOAD');
-        });
+          this.customAlertService.showToast('failedToLoad');
+        }
+      );
   }
 
   trackId(index: number, item: Image) {
@@ -71,6 +73,8 @@ export class HomePage {
   }
 
   view(image: Image) {
-    this.navController.navigateForward('/home/image-detail/' + image.id + '/view');
+    this.navController.navigateForward(
+      '/home/image-detail/' + image.id + '/view'
+    );
   }
 }

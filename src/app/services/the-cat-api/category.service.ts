@@ -5,17 +5,22 @@ import { Observable } from 'rxjs';
 import { createRequestOption } from './request-util';
 import { Category } from '../../models/category.model';
 
-
 @Injectable({
-  providedIn: 'root'
+  providedIn: 'root',
 })
 export class CategoryService {
   private resourceUrl = environment.theCatApiUrl + '/v1/categories';
 
-  constructor(protected http: HttpClient) { }
+  constructor(protected http: HttpClient) {}
 
-  list(req?: { page?: number, limit?: number }): Observable<HttpResponse<Category[]>> {
+  list(req?: {
+    page?: number;
+    limit?: number;
+  }): Observable<HttpResponse<Category[]>> {
     const options = createRequestOption(req);
-    return this.http.get<Category[]>(this.resourceUrl, { params: options, observe: 'response' });
+    return this.http.get<Category[]>(this.resourceUrl, {
+      params: options,
+      observe: 'response',
+    });
   }
 }
