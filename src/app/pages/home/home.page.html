@@ -18,9 +18,7 @@
   </ion-refresher>
 
   <div *ngFor="let image of images; trackBy: trackId">
-    <ion-card (click)="view(image)">
-      <img class="image" [src]="image.url" alt="" />
-    </ion-card>
+    <img class="image" [src]="image.url" alt="" (click)="view(image)"/>
   </div>
 
   <div *ngIf="!images?.length">
