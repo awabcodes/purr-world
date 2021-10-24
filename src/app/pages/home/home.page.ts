@@ -5,6 +5,8 @@ import { HttpResponse } from '@angular/common/http';
 import { filter, map } from 'rxjs/operators';
 import { CustomAlertService } from '../../services/alert/custom-alert.service';
 import { NavController } from '@ionic/angular';
+import { Directory, Encoding, Filesystem } from '@capacitor/filesystem';
+import { Share } from '@capacitor/share';
 
 @Component({
   selector: 'app-home',
@@ -76,5 +78,29 @@ export class HomePage implements OnInit {
     this.navController.navigateForward(
       '/home/image-detail/' + image.id + '/view'
     );
+  }
+
+  async save(image: Image) {
+    try {
+      const fileName = image.url.substring(image.url.lastIndexOf('/') + 1);
+      const result = await Filesystem.writeFile({
+        path: fileName,
+        data: image.url,
+        directory: Directory.Data,
+        encoding: Encoding.UTF8,
+      });
+      console.log('file Downloaded', result);
+    } catch (e) {
+      console.error('Unable to write file', e);
+    }
+  }
+
+  async share(image: Image) {
+    const shareRet = await Share.share({
+      title: 'Purr World',
+      text: 'Awesome cat you need to see right meow',
+      url: image.url,
+      dialogTitle: 'Share with buddies',
+    });
   }
 }
